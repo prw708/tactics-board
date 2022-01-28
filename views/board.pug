@@ -1,0 +1,36 @@
+extends ../../views/base.pug
+
+block append styles
+  link(href="/projects/tactics-board/static/css/tactics-board.css" rel="stylesheet")
+
+block append scripts
+  if cookieOptOut.acceptAnalytics
+    script(
+      id="recaptchaAPI"
+      type="text/javascript"
+      src=`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`
+    )
+  script(type="text/javascript" src="/static/js/vue.runtime.global.prod.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/TacticsBoard.umd.min.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/main.js")
+
+block content
+  div(class="position-relative container-fluid px-0")
+    header(class="row p-4 g-0")
+      if viewOnly
+        h1(class="display-3") View Tactics Board
+      else
+        h1(class="display-3") Edit Tactics Board
+      if viewOnly
+        p(class="lead mb-3") View your own tactics board
+      else
+        p(class="lead mb-3") Edit your own tactics board
+      p(class="mb-0"): a(href=`/return?b=${back}` class="btn btn-secondary") Return
+  noscript: div(class="alert alert-danger px-4 mb-0") JavaScript must be enabled to view and edit a board.
+  div(
+    id="app"
+    data-id=id
+    data-recaptchaSiteKey=recaptchaSiteKey
+    data-viewOnly=viewOnly
+  )
+  script(type="text/javascript" src="/projects/tactics-board/static/js/board.js")

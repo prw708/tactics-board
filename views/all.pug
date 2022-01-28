@@ -1,0 +1,106 @@
+extends ../../views/base.pug
+
+block append scripts
+  if cookieOptOut.acceptAnalytics
+    script(
+      id="recaptchaAPI"
+      type="text/javascript"
+      src=`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`
+    )
+  script(type="text/javascript" src="/static/js/vue.runtime.global.prod.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/Preview.umd.min.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/main.js")
+
+block content
+  div(class="position-relative container-fluid px-0")
+    header(class="row p-4 g-0")
+      h1(class="display-3") Tactics Boards
+      p(class="lead mb-3") All public tactics boards
+      p(class="mb-0")
+        a(href=`${basepath}/myboards` class="btn btn-secondary me-2") My Boards
+        a(href=`${basepath}/edit` class="btn btn-success me-2") Create
+
+  div(class="row g-0 pt-4 px-4")
+    if boards && boards.length > 0
+      div(class="pt-4 border-top")
+      for board in boards
+        div(class="px-4 pb-4 mb-4 border-bottom")
+          div(class="row gx-4")
+            div(class="col-sm-6")
+              h2(class="mb-2") #{board.title}
+              div(class="stars mb-4")
+                if board.rating >= 1
+                  div(class="star star-fill-icon")
+                else
+                  div(class="star star-icon")
+                if board.rating >= 2
+                  div(class="star star-fill-icon")
+                else
+                  div(class="star star-icon")
+                if board.rating >= 3
+                  div(class="star star-fill-icon")
+                else
+                  div(class="star star-icon")
+                if board.rating >= 4
+                  div(class="star star-fill-icon")
+                else
+                  div(class="star star-icon")
+                if board.rating >= 5
+                  div(class="star star-fill-icon")
+                else
+                  div(class="star star-icon")
+                if board.ratingsCompleted === 1
+                  span(class="small ms-2" id=`ratingsCount_${board.uuid}`) #{board.ratingsCompleted} rating
+                else
+                  span(class="small ms-2" id=`ratingsCount_${board.uuid}`) #{board.ratingsCompleted} ratings
+                div(class="d-block small")
+                  div(class="stars desc")
+              dl(class="row gx-4 mb-4")
+                dt(class="col-sm-5 mb-sm-0") Rating
+                dd(class="col-sm-7 mb-sm-0 rating" id=`rating_${board.uuid}`) #{board.rating} / 5
+                dt(class="col-sm-5 mb-sm-0") Owner
+                dd(class="col-sm-7 mb-sm-0") #{board.owner}
+                dt(class="col-sm-5 mb-sm-0") Updated
+                dd(class="col-sm-7 mb-sm-0") #{board.updated}
+                dt(class="col-sm-5 mb-sm-0") Field
+                dd(class="col-sm-7 mb-0") #{board.field}
+            div(class="col-sm-6 mb-4 mb-sm-0")
+              div(
+                class="preview h-100" 
+                id=`preview_${board.uuid}`
+                data-id=board.uuid
+                data-recaptchaSiteKey=recaptchaSiteKey
+                data-viewOnly="1"
+              )
+          a(href=`${basepath}/view/${board.uuid}` class="btn btn-secondary me-2") View
+          if loggedInAs === board.owner
+            a(href=`${basepath}/edit/${board.uuid}` class="btn btn-secondary me-2") Edit
+            a(href=`${basepath}/delete/${board.uuid}` class="btn btn-danger me-2") Delete
+      nav(class="mb-4")
+        ul(class="pagination mb-0 justify-content-center")
+          li(
+            class=((currentPage - 1) < startPage) ? "page-item disabled" : "page-item"
+          )
+            a(
+              class="page-link"
+              href=`?p=${currentPage - 1}`
+            ) Previous
+          for page of pages
+            li(
+              class=(page === currentPage) ? "page-item active" : "page-item"
+            )
+              a(
+                class="page-link"
+                href=`?p=${page}`
+              ) #{page}
+          li(
+            class=((currentPage + 1) > endPage) ? "page-item disabled" : "page-item"
+          )
+            a(
+              class="page-link"
+              href=`?p=${currentPage + 1}`
+            ) Next
+    else
+      p(class="mb-4") There are no boards yet.
+
+  script(type="text/javascript" src="/projects/tactics-board/static/js/preview.js")
