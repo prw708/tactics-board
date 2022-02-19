@@ -182,7 +182,7 @@ exports.board_view_get = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape(),
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['params'] });
@@ -219,7 +219,7 @@ exports.board_edit_get = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape(),
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['params'] });
@@ -262,7 +262,7 @@ exports.board_rate_post = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape(),
   body('rating', 'Must be numeric.')
     .trim()
@@ -388,7 +388,7 @@ exports.board_load_post = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape(),
   body('g-recaptcha-response', 'Failed reCAPTCHA test.')
     .trim()
@@ -479,7 +479,7 @@ exports.board_delete_get = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape(),
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['params'] });
@@ -500,7 +500,7 @@ exports.board_delete_post = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape(),
   body('dPhone', 'Must be a boolean.')
     .trim()
@@ -586,14 +586,14 @@ exports.board_save_post = [
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
-    .whitelist('A-Fa-f0-9\-')
+    .whitelist('A-Fa-f0-9\\-')
     .escape()
     .optional({ checkFalsy: true }),
   body('title', 'Must not be empty. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-.')
     .trim()
     .isLength({ min: 1, max: 50 })
     .matches(/^[A-Za-z0-9 _,!.?-]{1,50}$/)
-    .whitelist('A-Za-z0-9 _,!.?-')
+    .whitelist('A-Za-z0-9 _,!.?\\-')
     .escape(),
   body('public', 'Must be boolean.')
     .trim()
@@ -627,8 +627,7 @@ exports.board_save_post = [
     .trim()
     .isLength({ min: 0, max: 50 })
     .matches(/^[A-Za-z \-']{0,50}$/)
-    .whitelist('A-Za-z \-\'')
-    .escape(),
+    .whitelist('A-Za-z \\-\''),
   body('players.*.path.*.x', 'Must be from 0 to 1.')
     .trim()
     .escape()
