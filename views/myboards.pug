@@ -29,23 +29,33 @@ block content
             div(class="col-sm-6")
               h2(class="mb-2") #{board.title}
               div(class="stars mb-4")
-                if board.rating >= 1
+                if board.rating >= 0.5 && board.rating < 1
+                  div(class="star star-half-icon")
+                else if board.rating >= 1
                   div(class="star star-fill-icon")
                 else
                   div(class="star star-icon")
-                if board.rating >= 2
+                if board.rating >= 1.5 && board.rating < 2
+                  div(class="star star-half-icon")
+                else if board.rating >= 2
                   div(class="star star-fill-icon")
                 else
                   div(class="star star-icon")
-                if board.rating >= 3
+                if board.rating >= 2.5 && board.rating < 3
+                  div(class="star star-half-icon")
+                else if board.rating >= 3
                   div(class="star star-fill-icon")
                 else
                   div(class="star star-icon")
-                if board.rating >= 4
+                if board.rating >= 3.5 && board.rating < 4
+                  div(class="star star-half-icon")
+                else if board.rating >= 4
                   div(class="star star-fill-icon")
                 else
                   div(class="star star-icon")
-                if board.rating >= 5
+                if board.rating >= 4.5 && board.rating < 5
+                  div(class="star star-half-icon")
+                else if board.rating >= 5
                   div(class="star star-fill-icon")
                 else
                   div(class="star star-icon")

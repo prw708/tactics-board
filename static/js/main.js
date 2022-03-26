@@ -20,7 +20,7 @@ function getRating(index) {
   var ratings = document.querySelectorAll('.col-sm-7.mb-sm-0.rating');
   var rating = ratings[index].textContent.substring(0, ratings[index].textContent.indexOf('/')).trim();
   if (rating && rating !== '-') {
-    rating = Math.floor(parseFloat(rating));
+    rating = parseFloat(rating);
   } else {
     rating = 0;
   }
@@ -79,7 +79,9 @@ function starHover() {
         }
         for (var c = 1; c <= stars.length; c++) {
           for (var k = 1; k <= c; k++) {
-            if (rating >= k) {
+            if ((rating - k + 1) >= 0.5 && (rating - k + 1) < 1) {
+              stars[k - 1].className = "star star-half-icon";
+            } else if (rating >= k) {
               stars[k - 1].className = "star star-fill-icon";
             } else {
               stars[k - 1].className = "star star-icon";
@@ -130,13 +132,15 @@ function starHover() {
               }
               var starDiv = document.getElementById(`rating_${board.uuid}`).parentNode.parentNode.querySelector('.stars.mb-4');
               var stars = starDiv.querySelectorAll('.star');
-              var rating = Math.floor(parseFloat(board.rating));
+              var rating = parseFloat(board.rating);
               for (var a = 0; a < stars.length; a++) {
                 stars[a].className = "star star-icon";
               }
               for (var b = 1; b <= stars.length; b++) {
                 for (var k = 1; k <= b; k++) {
-                  if (rating >= k) {
+                  if ((rating - k + 1) >= 0.5 && (rating - k + 1) < 1) {
+                    stars[k - 1].className = "star star-half-icon";
+                  } else if (rating >= k) {
                     stars[k - 1].className = "star star-fill-icon";
                   } else {
                     stars[k - 1].className = "star star-icon";
