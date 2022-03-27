@@ -80,7 +80,7 @@ exports.home_get = [
         res.render('../tactics-board/views/confirm', {
           title: 'Tactics Board',
           error: 'An error occurred while loading the boards. Please try again later.',
-          back: 1
+          back: 2
         });
       });
   }
@@ -155,7 +155,7 @@ exports.my_boards_get = [
           res.render('../tactics-board/views/confirm', {
             title: 'My Boards',
             error: 'An error occurred while getting the data. Please try again later.',
-            back: 1,
+            back: 2,
           });
         });
     } else {
@@ -169,7 +169,7 @@ exports.board_create_get = function(req, res, next) {
     res.render('../tactics-board/views/board', {
       title: 'Edit Tactics Board',
       id: '',
-      back: 1,
+      back: 2,
       viewOnly: 0,
     });
   } else {
@@ -196,7 +196,7 @@ exports.board_view_get = [
           res.render('../tactics-board/views/board', {
             title: 'View Tactics Board',
             id: data.uuid,
-            back: 1,
+            back: 2,
             viewOnly: 1,
           });
         }
@@ -208,7 +208,7 @@ exports.board_view_get = [
         res.render('../tactics-board/views/confirm', {
           title: 'View Tactics Board',
           error: 'No board found.',
-          back: 1,
+          back: 2,
         });
       });
   }
@@ -230,13 +230,13 @@ exports.board_edit_get = [
             res.render('../tactics-board/views/confirm', {
               title: 'Edit Tactics Board',
               error: 'No board found.',
-              back: 1,
+              back: 2,
             });
           } else {
             res.render('../tactics-board/views/board', {
               title: 'Edit Tactics Board',
               id: data.uuid,
-              back: 1,
+              back: 2,
               viewOnly: 0,
             });
           }
@@ -248,7 +248,7 @@ exports.board_edit_get = [
           res.render('../tactics-board/views/confirm', {
             title: 'Edit Tactics Board',
             error: 'No board found.',
-            back: 1,
+            back: 2,
           });
         });
     } else {
@@ -336,7 +336,7 @@ exports.board_rate_post = [
               res.render('../tactics-board/views/confirm', {
                 title: 'Tactics Board',
                 success: 'Rating completed successfully!',
-                back: 1
+                back: 2
               });
             }
           })
@@ -350,7 +350,7 @@ exports.board_rate_post = [
               res.render('../tactics-board/views/confirm', {
                 title: 'Tactics Board',
                 error: 'An error occurred while saving the rating. Please try again later.',
-                back: 1
+                back: 2
               });
             }
           });
@@ -365,7 +365,7 @@ exports.board_rate_post = [
           res.render('../tactics-board/views/confirm', {
             title: 'Tactics Board',
             error: 'An error occurred while saving the rating. Please try again later.',
-            back: 1
+            back: 2
           });
         }
       });
@@ -376,7 +376,7 @@ exports.board_rate_post = [
         res.render('../tactics-board/views/confirm', {
           title: 'Tactics Board',
           error: 'An error occurred while saving the rating. Please try again later.',
-          back: 1
+          back: 2
         });
       }
     }
@@ -421,7 +421,7 @@ exports.board_load_post = [
               res.render('../tactics-board/views/confirm', {
                 title: 'Edit Tactics Board',
                 success: 'Board loaded successfully!',
-                back: 1
+                back: 2
               });
             }
           })
@@ -435,7 +435,7 @@ exports.board_load_post = [
               res.render('../tactics-board/views/confirm', {
                 title: 'Edit Tactics Board',
                 error: 'An error occurred while loading the board. Please try again later.',
-                back: 1
+                back: 2
               });
             }
           });
@@ -448,7 +448,7 @@ exports.board_load_post = [
         res.render('../tactics-board/views/confirm', {
           title: 'Edit Tactics Board',
           error: 'An error occurred while loading the board. Please try again later.',
-          back: 1
+          back: 2
         });
       }
     }
@@ -467,7 +467,7 @@ exports.board_load_post = [
         res.render('../tactics-board/views/confirm', {
           title: 'Edit Tactics Board',
           error: 'An error occurred while loading the board. Please try again later.',
-          back: 1
+          back: 2
         });
       }
     }
@@ -489,7 +489,7 @@ exports.board_delete_get = [
       res.render('../tactics-board/views/deleteboard', {
         title: 'Delete Tactics Board',
         id: data.uuid,
-        back: 1
+        back: 2
       });
     }
   }
@@ -552,7 +552,7 @@ exports.board_delete_post = [
       res.render('../tactics-board/views/confirm', {
         title: 'Delete Tactics Board',
         error: 'An error occurred while deleting the board. Please try again later.',
-        back: 1
+        back: 2
       });
     }
     function handleDeleteError(err, msg) {
@@ -567,7 +567,7 @@ exports.board_delete_post = [
       res.render('../tactics-board/views/confirm', {
         title: 'Delete Tactics Board',
         error: 'An error occurred while deleting the board. Please try again later.',
-        back: 1
+        back: 2
       });
     }
   }
@@ -769,7 +769,7 @@ exports.board_save_post = [
           res.render('../tactics-board/views/confirm', {
             title: 'Edit Tactics Board',
             error: 'An error occurred while saving the board. Please try again later.',
-            back: 1
+            back: 2
           });
         }
       }
@@ -787,7 +787,7 @@ exports.board_save_post = [
         res.render('../tactics-board/views/confirm', {
           title: 'Edit Tactics Board',
           error: 'An error occurred while saving the board. Please try again later.',
-          back: 1
+          back: 2
         });
       }
     }
