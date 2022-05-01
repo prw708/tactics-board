@@ -10,9 +10,7 @@ block append scripts
       type="text/javascript"
       src=`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`
     )
-  script(type="text/javascript" src="/static/js/vue.runtime.global.prod.js")
-  script(type="text/javascript" src="/projects/tactics-board/static/js/TacticsBoard.umd.min.js")
-  script(type="text/javascript" src="/projects/tactics-board/static/js/main.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/tactics-main.bundle.js")
 
 block content
   div(class="position-relative container-fluid px-0")
@@ -33,4 +31,4 @@ block content
     data-recaptchaSiteKey=recaptchaSiteKey
     data-viewOnly=viewOnly
   )
-  script(type="text/javascript" src="/projects/tactics-board/static/js/board.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/tactics-board.bundle.js")

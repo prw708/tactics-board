@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify';
+
 window.addEventListener("load", setup, false);
 
 function setup() {
@@ -157,3 +159,9 @@ function starHover() {
     }
   }
 }
+
+window.deleteBoardSubmit = deleteBoardSubmit;
+
+export {
+  initTooltips
+};

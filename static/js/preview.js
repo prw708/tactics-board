@@ -1,3 +1,7 @@
+import * as Vue from 'vue';
+import DOMPurify from 'dompurify';
+import Preview from './Preview.common';
+
 var previews = document.getElementsByClassName("preview");
 for (var i = 0; i < previews.length; i++) {
   var previewId = previews[i].id;
@@ -48,7 +52,7 @@ for (var i = 0; i < previews.length; i++) {
           grecaptcha.ready(function() {
             grecaptcha.execute(DOMPurify.sanitize(context.getRecaptchaSiteKey()), { action: 'load' })
             .then(function(recaptchaToken) {
-              data = {
+              var data = {
                 id: DOMPurify.sanitize(context.getId()),
               };
               data['g-recaptcha-response'] = DOMPurify.sanitize(recaptchaToken);

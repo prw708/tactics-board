@@ -45,6 +45,7 @@ export default {
       height: this.height,
       orientation: this.orientation,
     });
+    this.setupCanvas();
     window.addEventListener('resize', this.resize, false);
   },
   beforeUnmount() {
@@ -353,6 +354,10 @@ export default {
     setupCanvas() {
       this.width = Math.floor(this.$refs.canvasElement.parentNode.getBoundingClientRect().width);
       this.$refs.canvasElement.parentNode.style.height = this.height + 'px';
+      if (this.width > document.documentElement.clientWidth) {
+        this.width = Math.floor(document.documentElement.clientWidth);
+        this.$refs.canvasElement.parentNode.style.height = this.height + 'px';
+      }
       if (this.selectedField === 'Soccer') {
         this.drawSoccerField();
       } else if (this.selectedField === 'Basketball') {

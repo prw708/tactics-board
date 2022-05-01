@@ -1,3 +1,8 @@
+import * as Vue from 'vue';
+import DOMPurify from 'dompurify';
+import { initTooltips } from './main'
+import TacticsBoard from './TacticsBoard.common';
+
 var app = Vue.createApp({
   render() {
     var messageDiv;
@@ -118,7 +123,7 @@ var app = Vue.createApp({
       var id = this.getId();
       return new Promise(function(resolve, reject) {
         if (id !== '') {
-          data = {
+          var data = {
             id: DOMPurify.sanitize(context.getId()),
           };
           var httpRequest = new XMLHttpRequest();

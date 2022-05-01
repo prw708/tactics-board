@@ -7,9 +7,7 @@ block append scripts
       type="text/javascript"
       src=`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`
     )
-  script(type="text/javascript" src="/static/js/vue.runtime.global.prod.js")
-  script(type="text/javascript" src="/projects/tactics-board/static/js/Preview.umd.min.js")
-  script(type="text/javascript" src="/projects/tactics-board/static/js/main.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/tactics-main.bundle.js")
 
 block content
   div(class="position-relative container-fluid px-0")
@@ -113,4 +111,4 @@ block content
     else
       p(class="mb-4") There are no boards yet.
 
-  script(type="text/javascript" src="/projects/tactics-board/static/js/preview.js")
+  script(type="text/javascript" src="/projects/tactics-board/static/js/tactics-preview.bundle.js")
