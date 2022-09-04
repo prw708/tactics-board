@@ -27,6 +27,9 @@ block content
         p(class="lead mb-3") Edit your own tactics board
       p(class="mb-0"): a(href=`/return?b=${back}` class="btn btn-secondary") Return
   noscript: div(class="alert alert-danger px-4 mb-0") JavaScript must be enabled to view and edit a board.
+  if !cookieOptOut.acceptAnalytics
+    div(class="analyticsCookieNotice")
+      p(class="alert alert-danger px-4 mb-0") Cookie settings must be set to accept analytics cookies to load all elements.
   div(
     id="app"
     data-id=id

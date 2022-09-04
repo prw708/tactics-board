@@ -19,6 +19,9 @@ block content
       p(class="mb-0")
         a(href=`${basepath}/myboards` class="btn btn-secondary me-2") My Boards
         a(href=`${basepath}/edit` class="btn btn-success me-2") Create
+  if !cookieOptOut.acceptAnalytics
+    div(class="analyticsCookieNotice")
+      p(class="alert alert-danger px-4 mb-0") Cookie settings must be set to accept analytics cookies to load all elements.
 
   div(class="row g-0 pt-4 px-4")
     if boards && boards.length > 0
