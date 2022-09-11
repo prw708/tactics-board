@@ -38,5 +38,5 @@ var BoardSchema = new Schema({
 });
 
 module.exports = {
-  board: mongoose.model('Board', BoardSchema),
-}
+  board: BoardSchema
+};

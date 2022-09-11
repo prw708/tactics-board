@@ -7,8 +7,7 @@ const winston = require('../../scripts/log');
 const rateLimiter = require('../../scripts/rateLimiter');
 
 const mongoose = require('mongoose');
-const accountModels = require('../../account/models.js');
-const boardModels = require('../models.js');
+const web = require('../../dbWeb.js');
 
 const BASEPATH = '/projects/tactics-board';
 
@@ -26,7 +25,7 @@ exports.home_get = [
     if (errors.isEmpty()) {
       page = (data.p) ? data.p - 1 : 0;
     }
-    boardModels.board.find({ public: true }).countDocuments().exec()
+    web.board.find({ public: true }).countDocuments().exec()
       .then(function(documents) {
         pages = new Array(Math.ceil(documents / pageSize));
         pages = pages.fill(1);
@@ -42,7 +41,7 @@ exports.home_get = [
           start = pages[page] - viewable;
         }
         pages = pages.slice((start - 1), end);
-        return boardModels.board.find({ public: true })
+        return web.board.find({ public: true })
           .sort({ updated: 'desc' })
           .skip(page * pageSize)
           .limit(pageSize)
@@ -101,7 +100,7 @@ exports.my_boards_get = [
       if (errors.isEmpty()) {
         page = (data.p) ? data.p - 1 : 0;
       }
-      boardModels.board.find({ owner: req.session.loggedInAs }).countDocuments().exec()
+      web.board.find({ owner: req.session.loggedInAs }).countDocuments().exec()
         .then(function(documents) {
           pages = new Array(Math.ceil(documents / pageSize));
           pages = pages.fill(1);
@@ -117,7 +116,7 @@ exports.my_boards_get = [
             start = pages[page] - viewable;
           }
           pages = pages.slice((start - 1), end);
-          return boardModels.board.find({ owner: req.session.loggedInAs })
+          return web.board.find({ owner: req.session.loggedInAs })
             .sort({ updated: 'desc' })
             .skip(page * pageSize)
             .limit(pageSize)
@@ -186,7 +185,7 @@ exports.board_view_get = [
     .escape(),
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['params'] });
-    boardModels.board.findOne()
+    web.board.findOne()
       .or([{ uuid: data.uuid, owner: req.session.loggedInAs }, { uuid: data.uuid, public: true }])
       .exec()
       .then(function(board) {
@@ -224,7 +223,7 @@ exports.board_edit_get = [
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['params'] });
     if (req.session.loggedInAs && req.session.loggedInAsId) {
-      boardModels.board.findOne({ uuid: data.uuid, owner: req.session.loggedInAs }).exec()
+      web.board.findOne({ uuid: data.uuid, owner: req.session.loggedInAs }).exec()
         .then(function(board) {
           if (!board) {
             res.render('../tactics-board/views/confirm', {
@@ -296,7 +295,7 @@ exports.board_rate_post = [
         return Promise.reject('Failed reCAPTCHA test.');
       })
       .then((success) => {
-        boardModels.board.findOne({ uuid: data.uuid })
+        web.board.findOne({ uuid: data.uuid })
           .populate('raters')
           .lean()
           .exec()
@@ -318,7 +317,7 @@ exports.board_rate_post = [
               board.rating = parseFloat(avgN1.toFixed(1));
               board.ratingsCompleted = N1;
               board.raters.push({ _id: mongoose.Types.ObjectId(req.session.loggedInAsId.toString()) });
-              return boardModels.board.findByIdAndUpdate(
+              return web.board.findByIdAndUpdate(
                 board._id, 
                 { rating: board.rating, ratingsCompleted: board.ratingsCompleted, raters: board.raters }
               ).exec();
@@ -327,7 +326,7 @@ exports.board_rate_post = [
             }
           })
           .then(function(board) {
-            return boardModels.board.findById(board._id.toString()).exec();
+            return web.board.findById(board._id.toString()).exec();
           })
           .then(function(board) {
             if (req.xhr) {
@@ -411,7 +410,7 @@ exports.board_load_post = [
         return Promise.reject('Failed reCAPTCHA test.');
       })
       .then((success) => {
-        boardModels.board.findOne({ uuid: data.id })
+        web.board.findOne({ uuid: data.id })
           .lean()
           .exec()
           .then(function(board) {
@@ -541,7 +540,7 @@ exports.board_delete_post = [
         return Promise.reject('Failed reCAPTCHA test.');
       })
       .then((success) => {
-        boardModels.board.findOneAndDelete({ uuid: data.uuid, owner: req.session.loggedInAs }).exec()
+        web.board.findOneAndDelete({ uuid: data.uuid, owner: req.session.loggedInAs }).exec()
           .then(function(match) {
             res.redirect(BASEPATH + '/delete/confirm');
           })
@@ -700,18 +699,18 @@ exports.board_save_post = [
       })
       .then((success) => {
         let boardCount, existing;
-        boardModels.board.countDocuments({ owner: req.session.loggedInAs }).exec()
+        web.board.countDocuments({ owner: req.session.loggedInAs }).exec()
           .then(function(count) {
             if (count) {
               boardCount = count;
             } else {
               boardCount = 0;
             }
-            return boardModels.board.findOne({ uuid: data.uuid }).exec();
+            return web.board.findOne({ uuid: data.uuid }).exec();
           })
           .then(function(board) {
             existing = board;
-            return accountModels.userLevel.findOne({ user: req.session.loggedInAsId }).exec();
+            return web.userLevel.findOne({ user: req.session.loggedInAsId }).exec();
           })
           .then(function(user) {
             if ((!existing && ((boardCount + 1) > user.maxBoards)) || (existing && (boardCount > user.maxBoards))) {
@@ -722,7 +721,7 @@ exports.board_save_post = [
             }
           })
           .then(function(doc) {
-            return boardModels.board.findOne({ uuid: data.uuid }).exec();
+            return web.board.findOne({ uuid: data.uuid }).exec();
           })
           .then(function(board) {
             if (board) {
@@ -731,7 +730,7 @@ exports.board_save_post = [
               board.field = data.field;
               board.updated = Date.now();
             } else {
-              board = new boardModels.board({
+              board = new web.board({
                 uuid: uuidv4(),
                 title: data.title,
                 public: data.public,
