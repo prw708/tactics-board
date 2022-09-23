@@ -8,7 +8,6 @@ block append scripts
       src=`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`
     )
   script(type="text/javascript" src="/projects/tactics-board/static/js/dompurify.bundle.js")
-  script(type="text/javascript" src="/projects/tactics-board/static/js/runtime.bundle.js")
   script(type="text/javascript" src="/projects/tactics-board/static/js/tactics-main.bundle.js")
 
 block content
@@ -85,6 +84,7 @@ block content
                 data-recaptchaSiteKey=recaptchaSiteKey
                 data-viewOnly="1"
               )
+          a(href=`${basepath}/view/${board.uuid}` class="btn btn-secondary me-2") View
           a(href=`${basepath}/edit/${board.uuid}` class="btn btn-secondary me-2") Edit
           a(href=`${basepath}/delete/${board.uuid}` class="btn btn-danger me-2") Delete
       nav(class="mb-4")

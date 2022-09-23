@@ -91,7 +91,7 @@ function starHover() {
           }
         }
       }, false);
-      stars[j].addEventListener('click', function(event) {
+      stars[j].addEventListener('click', function handleClick(event) {
         var stars = event.target.parentNode.querySelectorAll('.star-fill-icon');
         var k = stars.length;
         var uuid = event.target.parentNode.parentNode.querySelector('.col-sm-7.mb-sm-0.rating').id;
