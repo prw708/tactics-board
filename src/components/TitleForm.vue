@@ -147,7 +147,7 @@ export default {
           this.publicError = "Must be checked or unchecked.";
           this.$emit('validTitle', false);
         } else {
-          this.titleError = "Must not be empty. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-.";
+          this.titleError = "Must be 1 to 50 characters. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-\"'.";
           this.$emit('validTitle', false);
         }
       } else {
@@ -224,7 +224,7 @@ export default {
       }
     },
     validateTitle(title) {
-      if (/^[A-Za-z0-9 _,!.?-]{1,50}$/.test(title)) {
+      if (/^[A-Za-z0-9 _,!.?"'-]{1,50}$/.test(title)) {
         return true;
       }
       return false;
@@ -239,7 +239,7 @@ export default {
           public: this.TitleFormValues.public,
         });
       } else {
-        this.titleError = "Must not be empty. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-.";
+        this.titleError = "Must be 1 to 50 characters. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-\"'.";
         this.$emit('TitleFormValues', {
           titleError: true, 
           title: event.target.value,

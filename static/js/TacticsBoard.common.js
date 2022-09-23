@@ -2938,30 +2938,30 @@ var es_object_to_string = __webpack_require__("d3b7");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__("25f0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/TitleForm.vue?vue&type=template&id=6590e5f8&lang=pug
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/TitleForm.vue?vue&type=template&id=eedd7286&lang=pug
 
-var TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_1 = {
+var TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_1 = {
   key: 0,
   class: "p-4"
 };
-var TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_2 = {
+var TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_2 = {
   class: "row"
 };
-var TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_3 = {
+var TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_3 = {
   class: "col-sm-7 col-md-6 mb-4 mb-sm-0"
 };
-var TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_4 = {
+var TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_4 = {
   class: "row"
 };
 
-var TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_5 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("label", {
+var TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_5 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("label", {
   class: "col-4 col-sm-3 col-md-2 col-form-label",
   for: "tfTitle"
 }, [/*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h5", {
   class: "mb-0"
 }, "Title")], -1);
 
-var TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_6 = {
+var TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_6 = {
   class: "col-8 col-sm-9 col-md-10"
 };
 var _hoisted_7 = ["value", "disabled"];
@@ -3033,8 +3033,8 @@ var _hoisted_27 = {
   key: 0,
   class: "invalid-feedback"
 };
-function TitleFormvue_type_template_id_6590e5f8_lang_pug_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return !this.loadLoading ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("form", TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_4, [TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_5, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_6590e5f8_lang_pug_hoisted_6, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
+function TitleFormvue_type_template_id_eedd7286_lang_pug_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return !this.loadLoading ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("form", TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_4, [TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_5, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", TitleFormvue_type_template_id_eedd7286_lang_pug_hoisted_6, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
     type: "text",
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])($data.titleError ? 'form-control is-invalid' : 'form-control'),
     name: "tfTitle",
@@ -3093,7 +3093,7 @@ function TitleFormvue_type_template_id_6590e5f8_lang_pug_render(_ctx, _cache, $p
     disabled: this.viewOnly ? 'disabled' : null
   }, null, 42, _hoisted_25), _hoisted_26, $data.publicError ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", _hoisted_27, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($data.publicError), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)])])])])])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true);
 }
-// CONCATENATED MODULE: ./src/components/TitleForm.vue?vue&type=template&id=6590e5f8&lang=pug
+// CONCATENATED MODULE: ./src/components/TitleForm.vue?vue&type=template&id=eedd7286&lang=pug
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__("a15b");
@@ -3138,7 +3138,7 @@ var es_regexp_test = __webpack_require__("00b4");
           this.publicError = "Must be checked or unchecked.";
           this.$emit('validTitle', false);
         } else {
-          this.titleError = "Must not be empty. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-.";
+          this.titleError = "Must be 1 to 50 characters. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-\"'.";
           this.$emit('validTitle', false);
         }
       } else {
@@ -3223,7 +3223,7 @@ var es_regexp_test = __webpack_require__("00b4");
       }
     },
     validateTitle: function validateTitle(title) {
-      if (/^[A-Za-z0-9 _,!.?-]{1,50}$/.test(title)) {
+      if (/^[A-Za-z0-9 _,!.?"'-]{1,50}$/.test(title)) {
         return true;
       }
 
@@ -3239,7 +3239,7 @@ var es_regexp_test = __webpack_require__("00b4");
           public: this.TitleFormValues.public
         });
       } else {
-        this.titleError = "Must not be empty. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-.";
+        this.titleError = "Must be 1 to 50 characters. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-\"'.";
         this.$emit('TitleFormValues', {
           titleError: true,
           title: event.target.value,
@@ -3281,7 +3281,7 @@ var exportHelper_default = /*#__PURE__*/__webpack_require__.n(exportHelper);
 
 
 
-const __exports__ = /*#__PURE__*/exportHelper_default()(TitleFormvue_type_script_lang_js, [['render',TitleFormvue_type_template_id_6590e5f8_lang_pug_render]])
+const __exports__ = /*#__PURE__*/exportHelper_default()(TitleFormvue_type_script_lang_js, [['render',TitleFormvue_type_template_id_eedd7286_lang_pug_render]])
 
 /* harmony default export */ var TitleForm = (__exports__);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/Field.vue?vue&type=template&id=fe55493c&lang=pug

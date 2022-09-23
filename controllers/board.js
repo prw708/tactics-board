@@ -588,12 +588,11 @@ exports.board_save_post = [
     .whitelist('A-Fa-f0-9\\-')
     .escape()
     .optional({ checkFalsy: true }),
-  body('title', 'Must not be empty. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-.')
+  body('title', 'Must be 1 to 50 characters. Can contain A-Z, a-z, 0-9, spaces, and _.,?!-"\'.')
     .trim()
     .isLength({ min: 1, max: 50 })
-    .matches(/^[A-Za-z0-9 _,!.?-]{1,50}$/)
-    .whitelist('A-Za-z0-9 _,!.?\\-')
-    .escape(),
+    .matches(/^[A-Za-z0-9 _,!.?"'-]{1,50}$/)
+    .whitelist('A-Za-z0-9 _,!.?"\'\\-'),
   body('public', 'Must be boolean.')
     .trim()
     .escape()

@@ -173,7 +173,7 @@ var app = Vue.createApp({
       if (!response) {
         return false;
       }
-      if (/^[A-Za-z0-9 _,!.?-]{1,50}$/.test(response.title)) {
+      if (/^[A-Za-z0-9 _,!.?"'-]{1,50}$/.test(response.title)) {
         return true;
       }
       return false;

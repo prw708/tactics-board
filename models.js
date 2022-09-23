@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var BoardSchema = new Schema({
+let BoardSchema = new Schema({
   uuid: { type: String, required: true, index: true, unique: true },
   title: { type: String, required: true, minlength: 1, maxlength: 50 },
   public: { type: Boolean, required: true },
