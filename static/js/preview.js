@@ -53,7 +53,7 @@ for (var i = 0; i < previews.length; i++) {
             grecaptcha.execute(DOMPurify.sanitize(context.getRecaptchaSiteKey()), { action: 'load' })
             .then(function(recaptchaToken) {
               var data = {
-                id: DOMPurify.sanitize(context.getId()),
+                uuid: DOMPurify.sanitize(context.getId()),
               };
               data['g-recaptcha-response'] = DOMPurify.sanitize(recaptchaToken);
               httpRequest.open('POST', '/projects/tactics-board/load', true);

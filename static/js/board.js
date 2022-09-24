@@ -124,7 +124,7 @@ var app = Vue.createApp({
       return new Promise(function(resolve, reject) {
         if (id !== '') {
           var data = {
-            id: DOMPurify.sanitize(context.getId()),
+            uuid: DOMPurify.sanitize(context.getId()),
           };
           var httpRequest = new XMLHttpRequest();
           if (!httpRequest) {

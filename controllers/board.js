@@ -185,7 +185,7 @@ exports.board_view_get = [
     .escape(),
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['params'] });
-    web.board.findOne()
+    web.board.findOne({})
       .or([{ uuid: data.uuid, owner: req.session.loggedInAs }, { uuid: data.uuid, public: true }])
       .exec()
       .then(function(board) {
@@ -383,7 +383,7 @@ exports.board_rate_post = [
 ];
 
 exports.board_load_post = [
-  body('id', 'Invalid ID.')
+  body('uuid', 'Invalid ID.')
     .trim()
     .isLength({ min: 36, max: 36 })
     .matches(/^[A-Fa-f0-9\-]{36}$/)
@@ -410,11 +410,14 @@ exports.board_load_post = [
         return Promise.reject('Failed reCAPTCHA test.');
       })
       .then((success) => {
-        web.board.findOne({ uuid: data.id })
+        web.board.findOne({})
+          .or([{ uuid: data.uuid, owner: req.session.loggedInAs }, { uuid: data.uuid, public: true }])
           .lean()
           .exec()
           .then(function(board) {
-            if (req.xhr) {
+            if (!board || board.length === 0) {
+              return Promise.reject('No board found.');
+            } else if (req.xhr) {
               res.status(200).json(board);
             } else {
               res.render('../tactics-board/views/confirm', {
