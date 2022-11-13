@@ -1,3 +1,4 @@
+import 'core-js/stable';
 import * as Vue from 'vue';
 import DOMPurify from 'dompurify';
 import { initTooltips } from './main'

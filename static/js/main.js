@@ -1,3 +1,4 @@
+import 'core-js/stable';
 import DOMPurify from 'dompurify';
 
 window.addEventListener("load", setup, false);
@@ -8,7 +9,11 @@ function setup() {
 }
 
 function initTooltips() {
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipTriggerList = [];
+  var tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  for (var i = 0; i < tooltips.length; i++) {
+    tooltipTriggerList.push(tooltips[i]);
+  }
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
