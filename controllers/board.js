@@ -16,7 +16,7 @@ exports.home_get = [
     .trim()
     .escape()
     .isNumeric({ no_symbols: true })
-    .isInt({ min: 1, max: 100 })
+    .isInt({ min: 1 })
     .toInt(10),
   function(req, res, next) {
     let data = matchedData(req, { includeOptionals: true, onlyValidData: true, locations: ['query'] });
